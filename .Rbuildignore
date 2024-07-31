@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 README.md
 LICENSE
+avg_activities2.csv
+sarcoma_drug_filtering_no_A549.txt

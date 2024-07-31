@@ -10,3 +10,10 @@ Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
 Packaged: 2024-07-30 16:07:33 UTC; elloumif
+Depends:
+    R (>= 3.5),
+    rcellminer
+Suggests:
+    dplyr,
+    tidyr,
+    stringr

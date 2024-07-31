@@ -1,3 +1,6 @@
+library(dplyr)
+library(tidyr)
+library(rcellminer)
 
 setwd("./inst/extdata/molecular")
 vtitle=as.character(read.csv("AromaTrExAnnotate.csv",header=F, stringsAsFactors = F)[1,])
@@ -59,8 +62,6 @@ mirdata=read.delim("miRNAOnlyDESeqAdjustedCountLog2Plus1.tsv",sep="\t",stringsAs
 dim(mirdata)
 
 # spread data horizontally
-library(tidyr)
-library(dplyr)
 mymirdata= mirdata %>% spread(CellLineName,Expression)
 dim(mymirdata) # 800 - 59
 rownames(mymirdata)=mymirdata[,1]
@@ -130,7 +131,6 @@ sarcomaMiame <- new("MIAME", name="NCI/DTP Sarcoma project", lab="NCI/DTP",
 #--------------------------------------------------------------------------------------------------
 # Make and save MolData object
 #--------------------------------------------------------------------------------------------------
-library(rcellminer)
 expData <- ExpressionSet(as.matrix(expdata))
 stopifnot(identical(rownames(expdata), rownames(metadata)))
 featureData(expData) <- new("AnnotatedDataFrame", data=metadata)

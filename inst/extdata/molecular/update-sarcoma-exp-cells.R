@@ -1,7 +1,8 @@
 library(rcellminer)
 library(stringr)
+
 tmpEnv <- new.env()
-##
+
 load("data/molData.RData", envir = tmpEnv)
 #load("data/drugData.RData", envir = tmpEnv)
 
@@ -22,16 +23,15 @@ stopifnot(identical(rownames(SarcomaExp),rownames(gene_exp_info)))
 
 gene_exp_info = cbind(ID=rownames(gene_exp_info),gene_exp_info)
 
-##  updated information on cell lines
+## updated information on cell lines
 ## miame : sample information
 minfo=read.csv("inst/extdata/drug/export_cell_line_curated.csv",stringsAsFactors = F,row.names = 1)
 dim(minfo) # 71 - 5
 
 minfo=minfo[cells,]
 stopifnot(identical(colnames(SarcomaExp),rownames(minfo)))
-#--------------------------------------------------------------------------------------------------
-# Make MIAME object
-#--------------------------------------------------------------------------------------------------
+
+# MAKE MIAME OBJECT ----
 minfo$OncoTree2[which(minfo$OncoTree2=="")]=NA
 minfo$OncoTree3[which(minfo$OncoTree3=="")]=NA
 minfo$OncoTree4[which(minfo$OncoTree4=="")]=NA
@@ -43,27 +43,19 @@ sarcomaMiame <- new("MIAME", name="NCI/DTP Sarcoma project", lab="NCI/DTP",
                               OncoTree2  = minfo$OncoTree2,
                               OncoTree3  = minfo$OncoTree3,
                               OncoTree4  = minfo$OncoTree4))
-#--------------------------------------------------------------------------------------------------
-# Make and save MolData object
-#--------------------------------------------------------------------------------------------------
 
+# MAKE AND SAVE MolData OBJECT ----
 expData <- ExpressionSet(SarcomaExp)
 stopifnot(identical(rownames(SarcomaExp), rownames(gene_exp_info)))
 featureData(expData) <- new("AnnotatedDataFrame", data=gene_exp_info)
-# ok
-
-## start
-
 
 nciSarcomaESetList[["exp"]] <- expData
-
 
 molData <- new("MolData", eSetList = nciSarcomaESetList, sampleData = sarcomaMiame)
 
 save(molData, file = "data/molData.RData")
 
-## update sample info in  drug data
-
+## update sample info in drug data
 load("data/drugData.RData", envir = tmpEnv)
 
 actData = tmpEnv$drugData@act
@@ -73,9 +65,4 @@ stopifnot(identical(colnames(actData),cells))
 drugData <- new("DrugData", act = actData, repeatAct = repeatActData, sampleData = sarcomaMiame)
 
 save(drugData, file = "data/drugData.RData")
-
-##
-
-
-
 

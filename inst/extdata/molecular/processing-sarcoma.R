@@ -52,7 +52,7 @@ dim(metadata) # 18432 - 13
 ##
 # 65 cell lines with activites, need to check also micro rna cell lines and do jointure!
 ##
-mirann=read.csv("AnnotatedmiRNA.csv",stringsAsFactors = F,sep = "\t")
+mirann=read.csv("AnnotatedmiRNA.tsv",stringsAsFactors = F,sep = "\t")
 length(mirann$GeneName); length(unique(mirann$GeneName)) # 800 -800
 
 mirdata=read.delim("miRNAOnlyDESeqAdjustedCountLog2Plus1.tsv",sep="\t",stringsAsFactors = F)
@@ -149,8 +149,6 @@ molData <- new("MolData", eSetList = sarcomaESetList, sampleData = sarcomaMiame)
 
 save(molData, file = "../../../data/molData.RData")
 
-## add drug data
-## update rcellminerUtilsCDB package
 
 
 

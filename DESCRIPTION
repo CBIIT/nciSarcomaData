@@ -1,0 +1,12 @@
+Package: nciSarcomaData
+Type: Package
+Title: nciSarcomaData
+Version: 0.1.1
+Author: Fathi Elloumi
+Maintainer: Fathi Elloumi <fathi.elloumi@nih.gov>
+Description: NCI DTP Sarcoma project data
+License: LGPL-3
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: no
+Packaged: 2024-07-30 16:07:33 UTC; elloumif

@@ -110,7 +110,7 @@ mymirdata=mymirdata[,cell.all]
 stopifnot(identical(colnames(expdata),colnames(mymirdata)))
 
 ## miame : sample information
-minfo=read.csv("../drug/export_cell_line.csv",stringsAsFactors = F,row.names = 1)
+minfo=read.csv("../drug/export_cell_line_curated.csv",stringsAsFactors = F,row.names = 1)
 dim(minfo) # 71 - 4
 
 minfo=minfo[cell.all,]

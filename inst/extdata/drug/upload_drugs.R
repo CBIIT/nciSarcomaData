@@ -4,7 +4,7 @@ library(rcellminer)
 
 setwd("./inst/extdata/drug")
 
-cells=read.csv("export_cell_line.csv")
+cells=read.csv("export_cell_line_curated.csv")
 drugs=read.csv("export_compound.csv")
 drugAnnot=read.csv("export_annotations.csv", row.names = 1)
 experims=read.csv("export_experiment.csv",stringsAsFactors = F)

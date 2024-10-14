@@ -1,7 +1,7 @@
 Package: nciSarcomaData
 Type: Package
 Title: nciSarcomaData
-Version: 0.1.2
+Version: 0.1.2-protocol
 Author: Fathi Elloumi
 Maintainer: Fathi Elloumi <fathi.elloumi@nih.gov>
 Description: NCI DTP Sarcoma project data
